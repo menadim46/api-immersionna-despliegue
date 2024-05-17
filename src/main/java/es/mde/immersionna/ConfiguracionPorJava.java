@@ -100,7 +100,7 @@ public class ConfiguracionPorJava {
 
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-		mapper.addMixIn(Reserva.class, MixIns.Reservas.class);
+		//mapper.addMixIn(Reserva.class, MixIns.Reservas.class);
 
 		return mapper;
 	}
