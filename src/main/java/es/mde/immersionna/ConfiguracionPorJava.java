@@ -23,13 +23,6 @@ import es.mde.rest.MixIns;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 
-/**
- * ConfiguracionPorJava va a establecer los parametros configurables en los
- * distintos properties, referenciándolos.
- * 
- * @author JOSE LUIS PUENTES ALAMOS
- *
- */
 @Configuration
 @EnableTransactionManagement
 @PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties",
@@ -38,21 +31,10 @@ import jakarta.persistence.EntityManagerFactory;
 @ComponentScan({"es.mde.rest"})// para que escanee los Controller y los servicios...
 public class ConfiguracionPorJava {
 
-	/**
-	 * Para usar la ruta a escanear entidades desde el application.properties
-	 */
 	@Value("${misEntidades}")
 	String entidades;
 
-	/**
-	 * Entity manager que sustituye al jpa-config.xml
-	 *
-	 * @param dataSource Parametro del tipo DataSource
-	 * @param env Parametro del tipo Environment
-	 * @param vendorAdapter Parametro del tipo JpaVendorAdapter
-	 * 
-	 * @return Devuelve un "@Bean" de LocalContainerEntityManagerFactory
-	 */
+	
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment env,
