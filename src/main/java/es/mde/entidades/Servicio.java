@@ -27,8 +27,42 @@ public class Servicio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true)
 	private Long id;
-	private String descripcion;
-	private LocalDate fechaInicio;
+	private String descripcion, idioma;
+	private LocalDate fechaInicio,fechaFin;
+	private boolean disponibilidad;
+	private int numeroAlumnos;
+
+	public String getIdioma() {
+		return idioma;
+	}
+
+	public void setIdioma(String idioma) {
+		this.idioma = idioma;
+	}
+
+	public LocalDate getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(LocalDate fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
+	public boolean isDisponibilidad() {
+		return disponibilidad;
+	}
+
+	public void setDisponibilidad(boolean disponibilidad) {
+		this.disponibilidad = disponibilidad;
+	}
+
+	public int getNumeroAlumnos() {
+		return numeroAlumnos;
+	}
+
+	public void setNumeroAlumnos(int numeroAlumnos) {
+		this.numeroAlumnos = numeroAlumnos;
+	}
 
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = Reserva.class, mappedBy = "servicio")
 	private Collection<Reserva> reservas = new ArrayList<>();
