@@ -2,8 +2,6 @@ package es.mde.rest;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
-
-
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.net.URI;
@@ -14,6 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -26,6 +25,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
+
+import es.mde.entidades.Cliente;
 /**
  * Configuracion de uso generalizado para distintos proyectos Spring Data Rest.
  * Proporciona las siguientes funcionalidades:
@@ -58,8 +59,7 @@ public class ConfiguracionRest {
 	@Bean
 	RepresentationModelProcessor<RepositorySearchesResource> addSearchLinks(RepositoryRestConfiguration config) {
 		Map<Class<?>, Class<?>> controllersRegistrados = new HashMap<>();
-//		controllersRegistrados.put(Jugador.class, JugadorController.class);
-//		controllersRegistrados.put(Cliente.class, ClienteController.class);
+		controllersRegistrados.put(Cliente.class, ClienteController.class);
 
 		return new RepresentationModelProcessor<RepositorySearchesResource>() {
 

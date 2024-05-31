@@ -1,16 +1,12 @@
 package es.mde.entidades;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -18,64 +14,74 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "RESERVAS")
 public class Reserva {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
-  private String nombreApellidosCliente;
-  private LocalDate fechaReserva;
-  private String tareaAsignada;
-  private String Username;
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "SERVICIO")
-  private Servicio servicio;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	private LocalDate fechaReserva;
+	private String tareaAsignada;
 
-  public Servicio getServicio() {
-    return servicio;
-  }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "SERVICIO")
+	private Servicio servicio;
 
-  public void setServicio(Servicio servicio) {
-    this.servicio = servicio;
-  }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "EMPLEADO")
+	private Empleado empleado;
 
-  public String getNombreApellidosCliente() {
-    return nombreApellidosCliente;
-  }
+	public Empleado getEmpleado() {
+		return empleado;
+	}
 
-  public void setNombreApellidosCliente(String nombreApellidosCliente) {
-    this.nombreApellidosCliente = nombreApellidosCliente;
-  }
+	public void setEmpleado(Empleado empleado) {
+		this.empleado = empleado;
+	}
 
-  public Long getId() {
-    return id;
-  }
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CLIENTE")
+	private Cliente cliente;
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+	public Cliente getCliente() {
+		return cliente;
+	}
 
-  public LocalDate getFechaReserva() {
-    return fechaReserva;
-  }
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
 
-  public void setFechaReserva(LocalDate fechaReserva) {
-    this.fechaReserva = fechaReserva;
-  }
+	public Servicio getServicio() {
+		return servicio;
+	}
 
-  public String getTareaAsignada() {
-    return tareaAsignada;
-  }
+	public void setServicio(Servicio servicio) {
+		this.servicio = servicio;
+	}
 
-  public void setTareaAsignada(String tareaAsignada) {
-    this.tareaAsignada = tareaAsignada;
-  }
+	
 
-  public String getUsername() {
-    return Username;
-  }
+	public Long getId() {
+		return id;
+	}
 
-  public void setUsername(String username) {
-    Username = username;
-  }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-  public Reserva() {}
+	public LocalDate getFechaReserva() {
+		return fechaReserva;
+	}
+
+	public void setFechaReserva(LocalDate fechaReserva) {
+		this.fechaReserva = fechaReserva;
+	}
+
+	public String getTareaAsignada() {
+		return tareaAsignada;
+	}
+
+	public void setTareaAsignada(String tareaAsignada) {
+		this.tareaAsignada = tareaAsignada;
+	}
+
+	public Reserva() {
+	}
 }
