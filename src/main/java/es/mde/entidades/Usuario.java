@@ -27,9 +27,17 @@ public class Usuario {
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		@Column(unique = true)
 		private Long id;
-		private String dni, correo,telefono;
+		private String dni, correo,telefono, nombreApellidos;
 		
 		
+		public String getNombreApellidos() {
+			return nombreApellidos;
+		}
+
+		public void setNombreApellidos(String nombreApellidos) {
+			this.nombreApellidos = nombreApellidos;
+		}
+
 		public String getDni() {
 			return dni;
 		}

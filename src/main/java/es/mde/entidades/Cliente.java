@@ -16,6 +16,7 @@ import jakarta.persistence.OneToMany;
 public class Cliente extends Usuario {
 private String numeroPasaporte;
 
+
 @OneToMany(cascade = CascadeType.ALL, targetEntity = Reserva.class, mappedBy = "cliente")
 private Collection<Reserva> reservas = new ArrayList<>();
 

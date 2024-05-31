@@ -7,9 +7,8 @@ import org.springframework.data.rest.core.annotation.RestResource;
 import es.mde.entidades.ServicioInmersion;
 import es.mde.entidades.ServicioIntercambio;
 
-@RepositoryRestResource(path="serviciosIntercambio",itemResourceRel="servicioIntercambio",collectionResourceRel="serviciosIntercambio")
-public interface ServicioIntercambioDAO extends JpaRepository<ServicioIntercambio,Long>{
-
-  @RestResource(path = "por-nivel-estudios")
-  List<ServicioInmersion> findByNivelEstudiosIgnoreCaseContaining(String txt);
+@RepositoryRestResource(path = "serviciosIntercambio", itemResourceRel = "servicioIntercambio", collectionResourceRel = "serviciosIntercambio")
+public interface ServicioIntercambioDAO extends JpaRepository<ServicioIntercambio, Long> {
+	@RestResource(path = "por-nivel-estudios")
+	List<ServicioInmersion> findByNivelEstudiosIgnoreCaseContaining(String txt);
 }

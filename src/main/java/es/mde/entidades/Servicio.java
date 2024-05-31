@@ -28,9 +28,30 @@ public class Servicio {
 	@Column(unique = true)
 	private Long id;
 	private String descripcion, idioma;
-	private LocalDate fechaInicio,fechaFin;
-	private boolean disponibilidad;
 	private int numeroAlumnos;
+	private LocalDate fechaInicio, fechaFin;
+	private boolean disponible;
+
+	@OneToMany(cascade = CascadeType.ALL, targetEntity = Reserva.class, mappedBy = "servicio")
+	private Collection<Reserva> reservas = new ArrayList<>();
+
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public boolean isDisponible() {
+		return true;
+	}
+
+	public void setDisponible(boolean disponible) {
+		this.disponible = disponible;
+	}
+
 
 	public String getIdioma() {
 		return idioma;
@@ -48,31 +69,12 @@ public class Servicio {
 		this.fechaFin = fechaFin;
 	}
 
-	public boolean isDisponibilidad() {
-		return disponibilidad;
-	}
-
-	public void setDisponibilidad(boolean disponibilidad) {
-		this.disponibilidad = disponibilidad;
-	}
-
 	public int getNumeroAlumnos() {
 		return numeroAlumnos;
 	}
 
 	public void setNumeroAlumnos(int numeroAlumnos) {
 		this.numeroAlumnos = numeroAlumnos;
-	}
-
-	@OneToMany(cascade = CascadeType.ALL, targetEntity = Reserva.class, mappedBy = "servicio")
-	private Collection<Reserva> reservas = new ArrayList<>();
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getDescripcion() {
