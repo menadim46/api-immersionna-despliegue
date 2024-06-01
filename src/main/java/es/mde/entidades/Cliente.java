@@ -29,12 +29,6 @@ public void setReservas(Collection<Reserva> reservas) {
 	this.reservas = reservas;
 }
 
-public void addReserva(Reserva reserva) {
-	this.getReservas().add(reserva);
-	reserva.setCliente(this);
-}
-
-
 public String getNumeroPasaporte() {
 	return numeroPasaporte;
 }
@@ -42,6 +36,13 @@ public String getNumeroPasaporte() {
 public void setNumeroPasaporte(String numeroPasaporte) {
 	this.numeroPasaporte = numeroPasaporte;
 }
+
+public void addReserva(Reserva reserva) {
+	this.getReservas().add(reserva);
+	reserva.setCliente(this);
+}
+
+
 
 public Cliente() {
 }

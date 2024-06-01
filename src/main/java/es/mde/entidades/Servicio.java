@@ -32,6 +32,7 @@ public class Servicio {
 	private LocalDate fechaInicio, fechaFin;
 	private boolean disponibilidad;
 
+
 	@OneToMany(cascade = CascadeType.ALL, targetEntity = Reserva.class, mappedBy = "servicio")
 	private Collection<Reserva> reservas = new ArrayList<>();
 
@@ -54,6 +55,7 @@ public class Servicio {
 		this.disponibilidad = disponibilidad;
 	}
 
+	
 	public String getIdioma() {
 		return idioma;
 	}

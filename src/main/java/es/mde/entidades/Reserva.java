@@ -28,6 +28,10 @@ public class Reserva {
 	@JoinColumn(name = "EMPLEADO")
 	private Empleado empleado;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "CLIENTE")
+	private Cliente cliente;
+
 	public Empleado getEmpleado() {
 		return empleado;
 	}
@@ -36,9 +40,6 @@ public class Reserva {
 		this.empleado = empleado;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CLIENTE")
-	private Cliente cliente;
 
 	public Cliente getCliente() {
 		return cliente;

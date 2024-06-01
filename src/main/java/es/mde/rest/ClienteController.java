@@ -3,7 +3,6 @@ package es.mde.rest;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.webmvc.PersistentEntityResource;
 import org.springframework.data.rest.webmvc.PersistentEntityResourceAssembler;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
@@ -15,12 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import es.mde.entidades.Servicio;
 import es.mde.repositorios.ClienteDAO;
-import es.mde.repositorios.ServicioDAO;
 
 @RepositoryRestController
 public class ClienteController {
 
-	private ServicioDAO servicioDAO;
 	private ClienteDAO clienteDAO;
 
 	public ClienteController(ClienteDAO clienteDAO) {

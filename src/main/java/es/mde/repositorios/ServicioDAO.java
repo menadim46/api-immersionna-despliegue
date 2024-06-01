@@ -15,4 +15,5 @@ public interface ServicioDAO extends JpaRepository<Servicio, Long> {
 	List<Servicio> findByDescripcionIgnoreCaseContaining(String txt);
 
 	List<Servicio> findByFechaInicioAfter(LocalDate fecha);
+
 }

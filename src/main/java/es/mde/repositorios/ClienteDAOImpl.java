@@ -29,6 +29,7 @@ public class ClienteDAOImpl implements ClienteDAOCustom {
 		serviciosCliente = clienteDAO.findById(id).get().getReservas().stream().map(reserva -> reserva.getServicio())
 				.collect(Collectors.toList());
 		List<Servicio> serviciosExistentesDesdeFecha = servicioDAO.findByFechaInicioAfter(fecha);
+
 		return serviciosCliente.stream().filter(serviciosExistentesDesdeFecha::contains).collect(Collectors.toList());
 	}
 }

@@ -2,7 +2,6 @@ package es.mde.immersionna;
 
 import java.util.Arrays;
 
-
 import java.util.AbstractMap;
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -27,16 +26,14 @@ import jakarta.persistence.EntityManagerFactory;
 @EnableTransactionManagement
 @PropertySource({ "classpath:config/rest.properties", "classpath:config/jackson.properties",
 		"classpath:config/gestionBBDD.properties"
-		
-		})
-@EnableJpaRepositories({"${misRepositorios}"}) // leer valor de propiedades? pero solo para las entidades anotadas
-@ComponentScan({"es.mde.rest"})// para que escanee los Controller y los servicios...
+
+})
+@EnableJpaRepositories({ "${misRepositorios}" }) // leer valor de propiedades? pero solo para las entidades anotadas
+@ComponentScan({ "es.mde.rest" }) // para que escanee los Controller y los servicios...
 public class ConfiguracionPorJava {
 
 	@Value("${misEntidades}")
 	String entidades;
-
-	
 
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Environment env,
@@ -62,6 +59,7 @@ public class ConfiguracionPorJava {
 
 	/**
 	 * Devuelve un EntityManager
+	 * 
 	 * @param emf Parametro del tipo EntityManagerFactory
 	 * @return Devuelve un EntityManager
 	 */
@@ -84,7 +82,7 @@ public class ConfiguracionPorJava {
 
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-		//mapper.addMixIn(Reserva.class, MixIns.Reservas.class);
+		// mapper.addMixIn(Reserva.class, MixIns.Reservas.class);
 
 		return mapper;
 	}
