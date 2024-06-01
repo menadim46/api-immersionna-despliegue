@@ -19,6 +19,7 @@ public class Reserva {
 	private Long id;
 	private LocalDate fechaReserva;
 	private String tareaAsignada;
+	private String usuario;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "SERVICIO")
@@ -32,6 +33,14 @@ public class Reserva {
 	@JoinColumn(name = "CLIENTE")
 	private Cliente cliente;
 
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
 	public Empleado getEmpleado() {
 		return empleado;
 	}
@@ -39,7 +48,6 @@ public class Reserva {
 	public void setEmpleado(Empleado empleado) {
 		this.empleado = empleado;
 	}
-
 
 	public Cliente getCliente() {
 		return cliente;
@@ -57,8 +65,6 @@ public class Reserva {
 		this.servicio = servicio;
 	}
 
-	
-
 	public Long getId() {
 		return id;
 	}
@@ -72,8 +78,14 @@ public class Reserva {
 	}
 
 	public void setFechaReserva(LocalDate fechaReserva) {
-		this.fechaReserva = fechaReserva;
-	}
+		 if (this.servicio != null) {
+	            LocalDate fechaInicio = servicio.getFechaInicio();
+	            LocalDate fechaFin = servicio.getFechaFin();
+	            if (fechaReserva.isBefore(fechaInicio) || fechaReserva.isAfter(fechaFin)) {
+	                throw new IllegalArgumentException("La fecha de reserva debe estar entre la fecha de inicio y la fecha de fin del servicio");
+	            }
+	        }
+	        this.fechaReserva = fechaReserva;	}
 
 	public String getTareaAsignada() {
 		return tareaAsignada;

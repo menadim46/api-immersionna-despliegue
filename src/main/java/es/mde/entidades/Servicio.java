@@ -69,8 +69,10 @@ public class Servicio {
 	}
 
 	public void setFechaFin(LocalDate fechaFin) {
-		this.fechaFin = fechaFin;
-	}
+		 if (fechaInicio != null && fechaFin.isBefore(fechaInicio)) {
+	            throw new IllegalArgumentException("La fecha de fin no puede ser anterior a la fecha de inicio");
+	        }
+	        this.fechaFin = fechaFin;	}
 
 	public int getNumeroAlumnos() {
 		return numeroAlumnos;
